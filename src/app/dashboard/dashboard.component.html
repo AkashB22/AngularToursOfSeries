@@ -1,0 +1,10 @@
+<h3>Top Series</h3>
+<div class = "grid grid-pad">
+  <a *ngFor="let series of topSeries" routerLink="/detail/{{series.id}}" class="col-1-4">
+    <div class="module series">
+      <h4>{{series.name}}</h4>
+    </div>
+  </a>
+</div>
+
+<app-series-search></app-series-search>

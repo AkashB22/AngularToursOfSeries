@@ -1,0 +1,15 @@
+<div *ngIf="series">
+  <h2>{{series.name | uppercase}} Details</h2>
+  <div>
+    <span>Id: </span>{{series.id}}
+  </div>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="series.name" placeholder="name">
+    </label>
+  </div>
+</div>
+
+<button (click)=goBack()>GoBack</button>
+<button (click)=save()>Save</button>
+

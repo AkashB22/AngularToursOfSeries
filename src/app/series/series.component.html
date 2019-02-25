@@ -1,0 +1,17 @@
+<h2>My Series</h2>
+<ul class="series">
+  <li *ngFor="let series of allSeries" [class.selected]="series===selectedSeries" (click)=onSelect(series)>
+    <a routerLink="/detail/{{series.id}}">
+      <span class="badge" >{{series.id}}</span>{{series.name}}
+    </a>
+    <button class="delete" title="delete Series" (click)="delete(series)">x</button>
+  </li>
+</ul>
+
+<div>
+  <label>Series Name
+    <input #heroName />
+  </label>  
+
+  <button (click)="add(heroName.value); heroName.value='';">Add</button>
+</div>
