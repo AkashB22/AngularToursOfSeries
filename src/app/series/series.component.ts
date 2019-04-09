@@ -9,6 +9,8 @@ import { SeriesService } from '../series.service';
 })
 export class SeriesComponent implements OnInit {
   allSeries : Series[];
+  series : Series;
+  id : number;
   
   constructor(private seriesService : SeriesService) { }
 
@@ -26,10 +28,25 @@ export class SeriesComponent implements OnInit {
     if(!name){
       return;
     }
-    this.seriesService.addSeries({name} as Series)
-      .subscribe(series => {
-        this.allSeries.push(series);
-      });
+
+    this.seriesService.getSeries()
+        .subscribe(series => {
+          this.allSeries = series;
+          var id = 0;
+          this.allSeries.forEach(function(indivSeries){
+            console.log(typeof(indivSeries.id));
+            id = typeof(indivSeries.id) == 'number' &&  indivSeries.id > id ? indivSeries.id : id;
+          });
+          id++;
+          this.series = {
+            'id' : id,
+            'name' : name
+          }
+          this.seriesService.addSeries(this.series)
+            .subscribe(series => {
+              this.allSeries.push(series);
+            });
+        });
   }
 
   delete(series: Series): void{

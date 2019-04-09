@@ -11,8 +11,9 @@ import { catchError, tap, map } from 'rxjs/operators';
 })
 
 export class SeriesService {
-  private seriesUrl = 'api/httpSeries'; //URL for api
-  
+  //private seriesUrl = 'api/newSeries'; 
+  private seriesUrl = 'https://localhost:3001/testing/'; //URL for api from node
+
   constructor(private http : HttpClient, private messageService : MessageService) { }
 
   getSeries() : Observable<Series[]>{
@@ -20,7 +21,7 @@ export class SeriesService {
     //this.messageService.add('SeriesService: fetched series');
     
     return this.http.get<Series[]>(this.seriesUrl).pipe(
-      tap(_ => this.log('fetched Series')),
+      tap(_ => this.log('fetched Series all')),
       catchError(this.handleError('getSeries', []))
     );
   };

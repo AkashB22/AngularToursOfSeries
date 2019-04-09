@@ -9,9 +9,11 @@ import { SeriesDetailComponent } from './series-detail/series-detail.component';
 import { MessageComponent } from './message/message.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+//import { InMemoryDataService } from './in-memory-data.service';
 import { SeriesSearchComponent } from './series-search/series-search.component';
+import { HighlightDirective } from './highlight.directive';
+
 
 @NgModule({
   declarations: [
@@ -21,16 +23,16 @@ import { SeriesSearchComponent } from './series-search/series-search.component';
     MessageComponent,
     DashboardComponent,
     SeriesSearchComponent,
-        
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation : false}
-    )
+    //HttpClientInMemoryWebApiModule.forRoot(
+    //InMemoryDataService, {dataEncapsulation : false}
+    //)
   ],
   providers: [
 

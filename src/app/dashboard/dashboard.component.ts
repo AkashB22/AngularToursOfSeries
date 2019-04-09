@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Series } from '../series'
-import { SeriesService } from '../series.service'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Series } from '../series';
+import { SeriesService } from '../series.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,7 @@ import { SeriesService } from '../series.service'
 export class DashboardComponent implements OnInit {
   topSeries : Series[];
 
-  constructor(private seriesService : SeriesService) { }
+  constructor(private httpnew: HttpClient, private seriesService : SeriesService) { }
 
   ngOnInit() {
     this.getSeries();
